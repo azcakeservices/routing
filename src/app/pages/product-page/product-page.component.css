@@ -1,0 +1,117 @@
+/* Затемнение фона */
+.modal-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* затемнение */
+  display: flex;
+  justify-content: flex-end;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal-container.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal-container.closed {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Сама модалка */
+.modal-content {
+  background-color: #ffffff;
+  color: #333;
+  width: 400px;
+  height: 100%;
+  padding: 24px;
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.25);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-container.open .modal-content {
+  transform: translateX(0);
+}
+
+/* Заголовок */
+.modal-content h3 {
+  margin-top: 0;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+/* Формы */
+.modal-content label {
+  display: block;
+  margin-top: 12px;
+  font-weight: 500;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border 0.2s ease;
+}
+
+.modal-content input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Ошибки */
+.error-message {
+  color: #dc3545;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+}
+
+/* Кнопки */
+.modal-actions {
+  margin-top: auto;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-bottom: 48px;
+}
+
+.modal-actions button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.modal-actions button:first-child {
+  background-color: #007bff;
+  color: white;
+}
+
+.modal-actions button:first-child:hover {
+  background-color: #0056b3;
+}
+
+.modal-actions button:last-child {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.modal-actions button:last-child:hover {
+  background-color: #c8c8c8;
+}

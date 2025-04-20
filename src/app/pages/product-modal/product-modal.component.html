@@ -1,0 +1,18 @@
+<div class="modal-backdrop" *ngIf="visible">
+  <div class="modal">
+    <h2>{{ mode === 'add' ? 'Добавить продукт' : 'Редактировать продукт' }}</h2>
+
+    <form [formGroup]="productForm">
+      <label>Название:</label>
+      <input formControlName="name" type="text" />
+
+      <label>Цена:</label>
+      <input formControlName="price" type="number" />
+    </form>
+
+    <div class="modal-actions">
+      <button class="primary-btn" (click)="save()">Сохранить</button>
+      <button class="secondary-btn" (click)="close()">Закрыть</button>
+    </div>
+  </div>
+</div>

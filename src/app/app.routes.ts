@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import {ProductPageComponent} from './pages/product-page/product-page.component';
 
 export const Mapping: Routes = [
   {
@@ -45,6 +46,11 @@ export const Payments: Routes = [
 ];
 
 export const routes: Routes = [
+  {
+    path: 'products',
+    loadComponent: () => import('../app/pages/product-page/product-page.component').then(m => m.ProductPageComponent)
+  },
+  { path: '', redirectTo: 'products', pathMatch: 'full' },
   {
     path: '',
     loadComponent: () =>

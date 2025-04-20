@@ -1,0 +1,36 @@
+<h2>Продукты</h2>
+
+<!-- Пример кнопок -->
+<button (click)="openAddModal()">Добавить продукт</button>
+<button (click)="openEditModal({ id: '1', name: 'Чай', price: 5, status: 'active' })">
+  Редактировать "Чай"
+</button>
+
+<!-- Модальное окно -->
+<div class="modal-container" [ngClass]="animation">
+  <div class="modal-content">
+    <h3>{{ mode === 'add' ? 'Добавление продукта' : 'Редактирование продукта' }}</h3>
+
+    <form [formGroup]="productForm" novalidate>
+      <!-- Название -->
+      <label for="name">Название</label>
+      <input id="name" formControlName="name" type="text" placeholder="Введите название" />
+      <span class="error-message" *ngIf="productForm.get('name')?.invalid && productForm.get('name')?.touched">
+        Название обязательно
+      </span>
+
+      <!-- Цена -->
+      <label for="price">Цена</label>
+      <input id="price" formControlName="price" type="number" placeholder="Введите цену" />
+      <span class="error-message" *ngIf="productForm.get('price')?.invalid && productForm.get('price')?.touched">
+        Цена должна быть больше или равна 0
+      </span>
+    </form>
+
+    <!-- Кнопки действия -->
+    <div class="modal-actions">
+      <button type="button" (click)="save()">Сохранить</button>
+      <button type="button" (click)="closeModal()">Закрыть</button>
+    </div>
+  </div>
+</div>
